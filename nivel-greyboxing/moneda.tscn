@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cdebgudp54hid"]
+
+[ext_resource type="Script" uid="uid://cme2uqm320x53" path="res://moneda.gd" id="1_nghqc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sn0t7"]
+albedo_color = Color(0.8478692, 0.49579424, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bhunq"]
+material = SubResource("StandardMaterial3D_sn0t7")
+height = 0.3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_riqys"]
+height = 0.3
+
+[node name="moneda" type="Area3D" unique_id=242480849]
+script = ExtResource("1_nghqc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1146915299]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_bhunq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2118215648]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_riqys")
+debug_color = Color(0.89718086, 0.7069179, 0.07816406, 0.41960785)

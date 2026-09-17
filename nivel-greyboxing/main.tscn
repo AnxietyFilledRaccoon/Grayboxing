@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://mfxwem5l5u62"]
+
+[ext_resource type="PackedScene" uid="uid://cgxd7u0v168uj" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c4rxpx7hgrdwq" path="res://moving_platform.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ev5ptai6ll5v" path="res://platform.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://4dbaj7a5qhlh" path="res://camera_pivot.gd" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cdebgudp54hid" path="res://moneda.tscn" id="5_lquwl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+size = Vector3(30, 2, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bhunq"]
+size = Vector3(30, 2, 30)
+
+[node name="Main" type="Node" unique_id=1220783655]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2137014033]
+transform = Transform3D(1, 0, 0, 0, 5.9604645e-08, 1, 0, -1, 5.9604645e-08, 0, 13, 0)
+
+[node name="PisoVictoria" type="StaticBody3D" parent="." unique_id=287280126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, -0.5419054, -162)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PisoVictoria" unique_id=1245760724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_bhunq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PisoVictoria" unique_id=1020648228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_bhunq")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=143248817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5419054, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1512081854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_bhunq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=643754789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_bhunq")
+
+[node name="Player" parent="." unique_id=2081743230 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17828411, 0)
+
+[node name="moving platform" parent="." unique_id=357398310 instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1.8793852, 0, 0.68404025, 0, 2, 0, -0.68404025, 0, 1.8793852, 80.9, 0, -126.19936)
+distance = 20.0
+
+[node name="moving platform2" parent="." unique_id=1515880069 instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1.299038, 0, -0.75, 0, 1.5, 0, 0.75, 0, 1.299038, -45.39582, 0, -69.32109)
+distance = 10.0
+direction = Vector3(0, 1, 0)
+
+[node name="CameraPivot" type="Marker3D" parent="." unique_id=824023092]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("4_1bvp3")
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=916864214]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 4, 8)
+current = true
+
+[node name="moneda" parent="." unique_id=242480849 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.978447, -3.0949945, -77.61607)
+
+[node name="platform" parent="." unique_id=2021772381 instance=ExtResource("3_h2yge")]
+transform = Transform3D(4.698463, 0, 1.7101007, 0, 5, 0, -1.7101007, 0, 4.698463, 10, 0, -32)
+
+[node name="platform2" parent="." unique_id=1463397327 instance=ExtResource("3_h2yge")]
+transform = Transform3D(2.9630651, 0, -0.46930343, 0, 3, 0, 0.46930343, 0, 2.9630651, 0, 0, -22)
+
+[node name="platform3" parent="." unique_id=784228632 instance=ExtResource("3_h2yge")]
+transform = Transform3D(3.8637033, 0.09023026, 1.0313367, 0, 3.984779, -0.34862295, -1.0352762, 0.3367439, 3.8490007, 28, 0, -43)
+
+[node name="platform4" parent="." unique_id=1914313067 instance=ExtResource("3_h2yge")]
+transform = Transform3D(3.8637033, 0, -1.0352762, 0, 4, 0, 1.0352762, 0, 3.8637033, 39, 0, -53)
+
+[node name="platform5" parent="." unique_id=131162558 instance=ExtResource("3_h2yge")]
+transform = Transform3D(5.4378467, 0, 2.5357096, 0, 6, 0, -2.5357096, 0, 5.4378467, 28, 0, -67)
+
+[node name="platform6" parent="." unique_id=2007819825 instance=ExtResource("3_h2yge")]
+transform = Transform3D(5.7063394, 0, -1.854102, 0, 6, 0, 1.854102, 0, 5.7063394, 48, 0, -78)
+
+[node name="platform7" parent="." unique_id=350354971 instance=ExtResource("3_h2yge")]
+transform = Transform3D(7.517541, 0, -2.736161, 0, 8, 0, 2.736161, 0, 7.517541, 69, 0, -94)
+
+[node name="platform8" parent="." unique_id=1973796461 instance=ExtResource("3_h2yge")]
+transform = Transform3D(6.3441544, 0, 2.9583278, 0, 7, 0, -2.9583278, 0, 6.3441544, 0, 0, -66)
+
+[node name="platform9" parent="." unique_id=415075436 instance=ExtResource("3_h2yge")]
+transform = Transform3D(4.0147834, 0, 4.458869, 0, 6, 0, -4.458869, 0, 4.0147834, -23, 0, -69)
+
+[node name="platform10" parent="." unique_id=865733450 instance=ExtResource("3_h2yge")]
+transform = Transform3D(4.7280645, 0, 3.693969, 0, 6, 0, -3.693969, 0, 4.7280645, -67, 0, -85)
+
+[node name="platform11" parent="." unique_id=1830010022 instance=ExtResource("3_h2yge")]
+transform = Transform3D(2.1213202, 0, 2.1213202, 0, 3, 0, -2.1213202, 0, 2.1213202, -56, -4, -78)
+
+[node name="platform12" parent="." unique_id=518230838 instance=ExtResource("3_h2yge")]
+transform = Transform3D(4.2710156, 0, 5.5460267, 0, 7, 0, -5.5460267, 0, 4.2710156, -70, 0, -105)
+
+[node name="platform13" parent="." unique_id=1930212307 instance=ExtResource("3_h2yge")]
+transform = Transform3D(6.4857, 0, -2.6335697, 0, 7, 0, 2.6335697, 0, 6.4857, -55, 0, -120)
+
+[node name="platform14" parent="." unique_id=1936243495 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1.2982814, -0.2854457, 5.8508964, 1.288412, 5.860034, 0, -5.7144084, 1.2563941, 1.3292907, -48, 0, -139)
+
+[node name="platform15" parent="." unique_id=2065692215 instance=ExtResource("3_h2yge")]
+transform = Transform3D(-4.104896, 0.90251994, 5.5977926, 1.5031472, 6.836706, 0, -5.467209, 1.202044, -4.202941, -34, 0, -150)
+
+[node name="platform16" parent="." unique_id=768414902 instance=ExtResource("3_h2yge")]
+transform = Transform3D(-3.7389846, 0.24437374, 4.686179, 1.9753895, 5.5170493, 1.2884119, -4.256505, 2.3457303, -3.5184824, -14, 0, -161)
+
+[node name="platform17" parent="." unique_id=1852611620 instance=ExtResource("3_h2yge")]
+transform = Transform3D(-5.296895, 0.346196, 6.638754, 2.7984684, 7.8158197, 1.8252501, -6.0300484, 3.3231177, -4.9845166, 10, 0, -169)
+
+[node name="moving platform3" parent="." unique_id=12468597 instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1.2935796, -0.18589179, -1.5139672, 0, 1.9850923, -0.2437387, 1.5253367, 0.1576477, 1.2839375, 44, 0, -169)
+distance = 10.0
+
+[node name="moneda2" parent="." unique_id=335189029 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.02155, 5.9050055, -93.61607)
+
+[node name="moneda3" parent="." unique_id=1913589075 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.02155, 0.90500546, -160.61607)
